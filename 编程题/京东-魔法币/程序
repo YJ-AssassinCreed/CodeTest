@@ -1,0 +1,33 @@
+package Test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		while(scanner.hasNext()){
+			int inputNum = Integer.valueOf(scanner.nextLine());
+			List<String> resultList = new ArrayList<String>();
+			while(inputNum>0){
+				if(inputNum%2==0){
+					inputNum = (inputNum-2)/2;
+					resultList.add("2");
+				}else{
+					inputNum = (inputNum-1)/2;
+					resultList.add("1");
+				}
+			}
+			Collections.reverse(resultList);
+			for(String str : resultList){
+				System.out.print(str);
+			}
+		}
+
+	}
+}

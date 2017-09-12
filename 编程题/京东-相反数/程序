@@ -1,0 +1,23 @@
+package Test;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		while(scanner.hasNext()){
+			String inputNum = scanner.nextLine();
+			String resverse = "";
+			StringBuilder sb = new StringBuilder();
+			for(int i=inputNum.length()-1;i>=0;i--){
+				sb.append(inputNum.charAt(i));
+			}
+			resverse=sb.toString();
+			System.out.println(Integer.parseInt(resverse)+Integer.parseInt(inputNum));
+		}
+
+	}
+}
