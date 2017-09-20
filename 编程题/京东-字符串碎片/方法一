@@ -1,0 +1,54 @@
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+        public static void main(String[] args) {
+
+            @SuppressWarnings("resource")
+            Scanner scanner = new Scanner(System.in);
+            while(scanner.hasNext()){
+                String inputNum = scanner.nextLine();
+                int strLength = inputNum.length();
+
+                DecimalFormat df = new DecimalFormat("#.00");
+                Boolean lowercaseFlag = true;
+                int sum=0;
+                int length=1;
+                List<Integer> lengthList = new ArrayList<Integer>();
+
+
+                if(strLength>=1&&strLength<=50){
+                    for(int i=0;i<strLength;i++){
+                        if(!(inputNum.charAt(i)>='a'&&inputNum.charAt(i)<='z')){
+                            lowercaseFlag = false;
+                            break;
+                        }
+                    }
+                    if(lowercaseFlag){
+
+                        for(int i=0;i<strLength;i++){
+                            if(i+1<strLength&&String.valueOf(inputNum.charAt(i)).equals(String.valueOf(inputNum.charAt(i+1)))){
+                                length+=1;
+                            }else{
+                                lengthList.add(length);
+                                sum+=1;
+                                length=1;
+                            }
+                        }
+                        sum=0;
+                        for(int num : lengthList){
+                            sum+=num;
+                        }
+                        System.out.println(df.format(sum/(float)lengthList.size()));
+                    }else{
+                        System.out.println("字符串不是全部小写,请从新输入");
+                    }
+                }else{
+                    System.out.println("字符串长度不符合规定,请从新输入");
+                }
+        }
+    }
+}

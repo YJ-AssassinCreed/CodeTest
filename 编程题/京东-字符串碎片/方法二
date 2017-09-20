@@ -1,0 +1,40 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Main {
+
+		public static void main(String[] args) {
+
+			@SuppressWarnings("resource")
+			Scanner scanner = new Scanner(System.in);
+			while(scanner.hasNext()){
+				String inputNum = scanner.nextLine();
+				int strLength = inputNum.length();
+
+				DecimalFormat df = new DecimalFormat("#.00");
+				Boolean lowercaseFlag = true;
+				int count=1;
+				if(strLength>=1&&strLength<=50){
+					for(int i=0;i<strLength;i++){
+						if(!(inputNum.charAt(i)>='a'&&inputNum.charAt(i)<='z')){
+							lowercaseFlag = false;
+							break;
+						}
+					}
+					if(lowercaseFlag){
+						for(int i=0;i<strLength;i++){
+							if(i+1<strLength&&!String.valueOf(inputNum.charAt(i)).equals(String.valueOf(inputNum.charAt(i+1)))){
+								count+=1;
+							}
+						}
+						System.out.println(df.format(strLength/(float)count));
+					}else{
+						System.out.println("字符串不是全部小写,请从新输入");
+					}
+				}else{
+					System.out.println("字符串长度不符合规定,请从新输入");
+				}
+		}
+
+	}
+}
